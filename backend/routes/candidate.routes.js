@@ -3,7 +3,7 @@ import protectRoute from "../middleware/protectRoute.js";
 import { addCandidate, getCandidateInfo } from "../controllers/candidate.controller.js";
 const router = express.Router();
 
-router.get("/:canId", getCandidateInfo);
-router.post("/add/:votingId", addCandidate); // id của người nhận
+router.get("/:canId",protectRoute, getCandidateInfo);
+router.post("/add/:votingId",protectRoute, addCandidate); // id của người nhận
 
 export default router;

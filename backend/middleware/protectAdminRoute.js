@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 
-const protectRoute = async (req, res, next) => {
+const protectAdminRoute = async (req, res, next) => {
 	try {
 		const token = req.cookies.jwt;
 		
@@ -21,6 +21,10 @@ const protectRoute = async (req, res, next) => {
 			return res.status(404).json({ error: "User not found" });
 		}
 
+        if (user.role != "admin") {
+			return res.status(404).json({ error: "User not admin" });
+		}
+
 		req.user = user;
 
 		next();
@@ -30,4 +34,4 @@ const protectRoute = async (req, res, next) => {
 	}
 };
 
-export default protectRoute;
+export default protectAdminRoute;
