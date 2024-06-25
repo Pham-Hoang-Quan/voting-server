@@ -4,13 +4,13 @@ import { getUsersForSidebar, getUserById, getUsers, updateUser, getBlockedUsers,
 
 const router = express.Router();
 
-router.get("/", getUsersForSidebar);
-router.get("/:id", getUserById);
-router.get("/getUsers/user", getUsers);
-router.post("/updateUser/:id", updateUser);
-router.get("/getUsers/blocked", getBlockedUsers);
-router.get("/getUsers/unblocked", getUnblockedUsers);
-router.put("/blockUser/:id", blockUser);
-router.put("/unblockUser/:id", unblockUser);
+router.get("/",protectRoute, getUsersForSidebar);
+router.get("/:id",protectRoute, getUserById);
+router.get("/getUsers/user",protectRoute, getUsers);
+router.post("/updateUser/:id",protectRoute, updateUser);
+router.get("/getUsers/blocked",protectRoute, getBlockedUsers);
+router.get("/getUsers/unblocked",protectRoute, getUnblockedUsers);
+router.put("/blockUser/:id",protectRoute, blockUser);
+router.put("/unblockUser/:id",protectRoute, unblockUser);
 
 export default router;

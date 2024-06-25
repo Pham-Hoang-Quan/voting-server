@@ -1,5 +1,3 @@
-import Conversation from "../models/conversation.model.js";
-import Message from "../models/message.model.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
 import Voting from "../models/voting.model.js";
 import Candidate from "../models/candidate.model.js";
