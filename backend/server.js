@@ -16,12 +16,15 @@ import cors from "cors";
 // app.use(cors());
 const whitelist = ['http://localhost:3000', 'https://voting-ui-eight.vercel.app/'];
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
+    // origin: function (origin, callback) {
+    //     if (whitelist.indexOf(origin) !== -1 || !origin) {
+    //         callback(null, true);
+    //     } else {
+    //         callback(new Error('Not allowed by CORS'));
+    //     }
+    // },
+	origin: function (origin, callback) {
+        callback(null, true); // Cho phép tất cả các nguồn truy cập
     },
     credentials: true // Cho phép gửi cookie từ client
 };
