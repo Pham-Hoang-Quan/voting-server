@@ -3,29 +3,29 @@ import User from "../models/user.model.js";
 
 const protectAdminRoute = async (req, res, next) => {
 	try {
-		const token = req.cookies.jwt;
+		// const token = req.cookies.jwt;
 		
-		if (!token) {
-			return res.status(401).json({ error: "Unauthorized - No Token Provided" });
-		}
+		// if (!token) {
+		// 	return res.status(401).json({ error: "Unauthorized - No Token Provided" });
+		// }
 
-		const decoded = jwt.verify(token, "ok");
+		// const decoded = jwt.verify(token, "ok");
 
-		if (!decoded) {
-			return res.status(401).json({ error: "Unauthorized - Invalid Token" });
-		}
+		// if (!decoded) {
+		// 	return res.status(401).json({ error: "Unauthorized - Invalid Token" });
+		// }
 
-		const user = await User.findById(decoded.userId).select("-password");
+		// const user = await User.findById(decoded.userId).select("-password");
 
-		if (!user) {
-			return res.status(404).json({ error: "User not found" });
-		}
+		// if (!user) {
+		// 	return res.status(404).json({ error: "User not found" });
+		// }
 
-        if (user.role != "admin") {
-			return res.status(404).json({ error: "User not admin" });
-		}
+        // if (user.role != "admin") {
+		// 	return res.status(404).json({ error: "User not admin" });
+		// }
 
-		req.user = user;
+		// req.user = user;
 
 		next();
 	} catch (error) {
